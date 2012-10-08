@@ -17,7 +17,7 @@ Start the script by creating a new instance of the new window Object.
 
     var newWindow = new NewWindow(selector);
 
-* selectorL The jQuery selected links you want to check against and potentionally add the attribute to. 
+* selector: The jQuery selected links you want to check against and potentionally add the attribute to. 
 
 Run the script
 ------------------------
