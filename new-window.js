@@ -1,14 +1,30 @@
-function NewWindow(links) {
+function NewWindow(links, settings) {
     this.links = links;
-    this.host  = window.location.host;
+    this.hostname  = window.location.hostname;
+    this.hostnameLength = window.location.hostname.length;
+
+    this.settings = $.extend({}, this.defaults, settings);
+}
+
+NewWindow.prototype.defaults = {
+    className: false,
+    allowSubdomains: false
+}
+
+NewWindow.prototype.filterLinks = function(i, link) {
+    if ( this.settings.allowSubdomains ) {
+        return link.hostname !== this.hostname && link.hostname.substr(-this.hostnameLength) !== this.hostname;
+    } else {
+        return link.hostname !== this.hostname;
+    }
 }
 
 NewWindow.prototype.setAsNewWindow = function() {
-    var that = this;
+    var links = this.links.filter( $.proxy(this.filterLinks, this) );
 
-    that.links.each(function() {
-        if ( this.host !== that.host ) {
-            $(this).attr('target', '_blank');
-        }
-    });
+    links.attr('target', '_blank');
+
+    if ( this.settings.className ) {
+        links.addClass( this.settings.className );
+    }
 }
