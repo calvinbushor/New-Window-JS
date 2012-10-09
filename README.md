@@ -19,10 +19,10 @@ Start the script by creating a new instance of the new window Object.
 
 * selector: The jQuery selected links you want to check against and potentionally add the attribute to. 
 * settings: An object that accepts two parameters:
->#####className: (_string_)
->If a link is external, give it a CSS class.
->#####allowSubdomains: (_boolean_)
->Exclude links from the same hostname (subdomains on the same domain will be ignored).
+#####className: (_string_)
+If a link is external, give it a CSS class.
+#####allowSubdomains: (_boolean_)
+Exclude links from the same hostname (subdomains on the same domain will be ignored).
 
 Run the script
 ------------------------
